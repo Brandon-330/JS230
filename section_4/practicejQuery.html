@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <title>jQuery Selectors</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script id="post" type="text/x-handlebars">
+      <article>
+        <h1>{{title}}</h1>
+        <p><time>Posted on {{published}}</time></p>
+        {{{body}}}
+        <footer>
+          <p>
+            Tags:
+            {{#each tags}}
+              {{> tag}}
+            {{/each}}
+          </p>
+        </footer>
+      </article>
+    </script>
+    <script id='tag' type="test/x-handlebars">
+      <strong>{{this}}</strong>
+    </script>
+    <meta charset="utf-8" />
+  </head>
+  <body>
+    <form method="GET" action="/">
+      <fieldset>
+
+        <input type="text">
+        <input type="submit">
+      </fieldset>
+    </form>
+    <ul>
+      <li>ok</li>
+      <li>ok</li>
+      <li>ok</li>
+    </ul>
+    <a href="#">
+      Link
+    </a>
+    <div id='accordion'>
+      <p>Ok ok</p>
+    </div>
+  </body>
+</html>
