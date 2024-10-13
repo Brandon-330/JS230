@@ -10,9 +10,9 @@ var inventory;
       // $("#order_date").text(date.toUTCString());
     },
     cacheTemplate: function() {
-      // var $iTmpl = $("#inventory_item").remove();
-      var iTmpl = document.getElementById('inventory_item').remove();
-      this.template = iTmpl.html();
+      var $iTmpl = $("#inventory_item").remove();
+      // var iTmpl = document.getElementById('inventory_item').remove();
+      this.template = $iTmpl.html();
     },
     add: function() {
       this.lastId++;
@@ -58,10 +58,10 @@ var inventory;
       document.getElementById('inventory').append($item);
     },
     findParent: function(e) {
-      return $(e.target).closest("tr");
+      return e.target.closest("tr");
     },
-    findID: function($item) {
-      return +$item.find("input[type=hidden]").val();
+    findID: function(item) {
+      return +item.querySelector("input[type=hidden]").value;
     },
     deleteItem: function(e) {
       e.preventDefault();
@@ -75,7 +75,9 @@ var inventory;
       this.update($item);
     },
     bindEvents: function() {
-      $("#add_item").on("click", $.proxy(this.newItem, this));
+      document.getElementById('add_item').addEventListener('click', this.newItem.bind(this));
+      // $("#add_item").on("click", $.proxy(this.newItem, this));
+      document.getElementById('inventory').addEventListener('click', )
       $("#inventory").on("click", "a.delete", $.proxy(this.deleteItem, this));
       $("#inventory").on("blur", ":input", $.proxy(this.updateItem, this));
     },
